@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'oj', '~> 2.13.1'
   s.add_dependency 'activesupport', '~> 4.2', '>= 4.2.5'
   s.add_dependency 'safe_yaml', '~> 1.0', '>= 1.0.4'
+  s.add_dependency 'commonmarker', '~> 0.14.0'
   s.add_development_dependency 'bundler', '~> 1.0'
   s.add_development_dependency 'rspec', '~> 3.4'
   s.add_development_dependency 'rake'
