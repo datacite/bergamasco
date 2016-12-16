@@ -37,6 +37,20 @@ describe Bergamasco::Markdown do
     expect(updated_file).to eq(file)
   end
 
+  it 'should read yaml' do
+    filepath = fixture_path + 'cool-dois.yml'
+    metadata = subject.read_yaml(filepath)
+    expect(metadata["title"]).to eq("Cool DOI's")
+  end
+
+  it 'should write yaml' do
+    filepath = fixture_path + 'cool-dois.yml'
+    text = IO.read(filepath)
+    metadata = subject.read_yaml(filepath)
+    length = subject.write_yaml(filepath, metadata)
+    expect(length).to eq(text.length)
+  end
+
   it 'should update file' do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)

@@ -23,6 +23,15 @@ module Bergamasco
       join_yaml_frontmatter(metadata, content)
     end
 
+    def self.read_yaml(filepath)
+      file = IO.read(filepath)
+      SafeYAML.load(file)
+    end
+
+    def self.write_yaml(filepath, content)
+      IO.write(filepath, content.to_yaml)
+    end
+
     def self.render_html(text, options={})
       text = split_yaml_frontmatter(text).last if options[:skip_yaml_header]
 
