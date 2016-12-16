@@ -5,6 +5,7 @@ require 'yaml'
 require 'safe_yaml/load'
 require 'loofah'
 require 'commonmarker'
+require 'pathname'
 
 require "bergamasco/summarize"
 require "bergamasco/sanitize"

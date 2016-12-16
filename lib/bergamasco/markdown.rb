@@ -29,6 +29,12 @@ module Bergamasco
     end
 
     def self.write_yaml(filepath, content)
+      unless File.exist?(filepath)
+        parentdir = Pathname.new(filepath).parent
+        FileUtils.mkdir_p parentdir
+        FileUtils.touch filepath
+      end
+
       IO.write(filepath, content.to_yaml)
     end
 
