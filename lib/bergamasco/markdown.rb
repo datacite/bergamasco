@@ -24,17 +24,17 @@ module Bergamasco
     end
 
     def self.read_yaml(filepath)
-      file = IO.read(filepath)
-      SafeYAML.load(file)
-    end
-
-    def self.write_yaml(filepath, content)
       unless File.exist?(filepath)
         parentdir = Pathname.new(filepath).parent
         FileUtils.mkdir_p parentdir
         FileUtils.touch filepath
       end
 
+      file = IO.read(filepath)
+      SafeYAML.load(file)
+    end
+
+    def self.write_yaml(filepath, content)
       IO.write(filepath, content.to_yaml)
     end
 
