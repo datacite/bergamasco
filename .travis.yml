@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+- 2.3.1
+install:
+- travis_retry bundle install
+script: bundle exec rspec
+notifications:
+  slack: "$SLACK_TOKEN"
+  email: false
+deploy:
+  provider: rubygems
+  api_key:
+    secure: fwaYVUhCt3fOJvZj37CsZ+X5DcHwVZjj6x1I3Qs9bNrEC3o9OhPj/W4vC0LslmwXUnKgSwnwK/8vlSjy7H+N5yUbXPowA7N9qOq0FY4nU/8l8gor9SbP6Q9AXH4FmRHYyT+eMYj617boBNQkaf6bMdecxT3XSvqQEVxbB66vd3mltJggBeL7DAkjUJwAoBApFiU7lVyyEwtUTlUNGFWSKNrTGeabqMN1u+C3AjZNNAZXW4dZWxlBpwySAubToSuOzBbVjNJ1leGrKj9UB1DHzry7Qp0yWqKzdrSYdPwuQDygRkM0WmBRfQRZejphqE269cwdYXFV3DyUULuLsiEx0STNzMXxpLD/SyVNs0j+2e0aI3259hFgFJSDHh/iMFtQOAO9hSb+s8eqJTpKMu2dDRJCBA+oBK4Tr0a2ojGlMSQ/3tHwKLjan3dfqoDMUGkSnUTPTrW16n2ZzV1lmmHlOe03hykKNm+HOqu6LuCtGcP/xRxhuvsIe9qNopO6hfJwonFClQnIKXH/n1v0xkGElbxYRlNPhqyrNknFMFKW5puqSQfbwcb5iZPErtMsNo5DuGhz0R0oRVTYWCL8TeX2bnRdO+CQqW0Qam/l1bZkemGnWTHuC4wouBQWeoUcCt5dxLyza4n9qpgdJUYcse/AH1cROhMTybEmFqIr2MOD450=
+  gem: bergamasco
+  on:
+    tags: true
+    repo: datacite/bergamasco
