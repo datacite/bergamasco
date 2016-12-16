@@ -1,6 +1,12 @@
 language: ruby
 rvm:
 - 2.3.1
+addons:
+  apt:
+    sources:
+      - kalakris-cmake
+    packages:
+      - cmake
 install:
 - travis_retry bundle install
 script: bundle exec rspec
