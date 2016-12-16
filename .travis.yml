@@ -3,7 +3,7 @@ rvm:
 - 2.3.1
 
 before_install:
-  - sudo add-apt-repository kalakris-cmake -y
+  - sudo add-apt-repository ppa:kalakris/cmake -y
   - sudo apt-get update -q
   - sudo apt-get install cmake -y
 
