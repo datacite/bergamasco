@@ -43,6 +43,24 @@ describe Bergamasco::Markdown do
     expect(metadata["title"]).to eq("Cool DOI's")
   end
 
+  it 'should read yaml from markdown file' do
+    filepath = fixture_path + 'cool-dois.html.md'
+    metadata = subject.read_yaml(filepath)
+    expect(metadata["title"]).to eq("Cool DOI's")
+  end
+
+  it 'should read yaml for doi metadata' do
+    filepath = fixture_path + 'cool-dois.html.md'
+    separator = "READMORE"
+    metadata = subject.read_yaml_for_doi_metadata(filepath, separator: separator, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
+    expect(metadata["related_identifiers"]).to eq([{:id=>"https://www.w3.org/Provider/Style/URI",
+        :related_identifier_type=>"URL",
+        :relation_type=>"references"},
+      { :id=>"10.1371/JOURNAL.PONE.0115253",
+        :related_identifier_type=>"DOI",
+        :relation_type=>"references" }])
+  end
+
   it 'should write yaml' do
     filepath = fixture_path + 'cool-dois.yml'
     text = IO.read(filepath)
@@ -62,7 +80,20 @@ describe Bergamasco::Markdown do
   it 'should convert markdown' do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)
-    html = subject.render_html(file, skip_yaml_header: true)
-    expect(html).to start_with("<p>In 1998 Tim Berners-Lee coined")
+    html = subject.render_html(file, skip_yaml_header: true, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
+    expect(html).to start_with("<p>In 1998 Tim Berners-Lee coined the term cool URIs <span class=\"citation\">(1998)</span>, that is URIs that don’t change.")
+  end
+
+  it 'should extract references' do
+    filepath = fixture_path + 'cool-dois.html.md'
+    file = IO.read(filepath)
+    html = subject.render_html(file, skip_yaml_header: true, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
+    refs = subject.extract_references(html, skip_yaml_header: true, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
+    expect(refs).to eq([{:id=>"https://www.w3.org/Provider/Style/URI",
+        :related_identifier_type=>"URL",
+        :relation_type=>"references"},
+      { :id=>"10.1371/JOURNAL.PONE.0115253",
+        :related_identifier_type=>"DOI",
+        :relation_type=>"references" }])
   end
 end

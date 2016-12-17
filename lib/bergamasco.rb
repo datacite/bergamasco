@@ -4,8 +4,11 @@ require 'nokogiri'
 require 'yaml'
 require 'safe_yaml/load'
 require 'loofah'
+require 'pandoc-ruby'
 require 'commonmarker'
 require 'pathname'
+require 'time'
+require 'addressable/uri'
 
 require "bergamasco/summarize"
 require "bergamasco/sanitize"

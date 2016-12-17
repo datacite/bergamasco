@@ -11,6 +11,11 @@ module Bergamasco
       end
     end
 
+    def self.summary_from_html(html, options={})
+      summary = Bergamasco::Sanitize.sanitize(html, options).squish
+      summary(summary, options)
+    end
+
     # from https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/truncate_html.rb
     def self.truncate_at_separator(text, separator)
       text = text.encode('UTF-8') if text.respond_to?(:encode)
