@@ -53,12 +53,7 @@ describe Bergamasco::Markdown do
     filepath = fixture_path + 'cool-dois.html.md'
     separator = "READMORE"
     metadata = subject.read_yaml_for_doi_metadata(filepath, separator: separator, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
-    expect(metadata["related_identifiers"]).to eq([{:value=>"https://www.w3.org/Provider/Style/URI",
-        :related_identifier_type=>"URL",
-        :relation_type=>"References"},
-      { :value=>"10.1371/JOURNAL.PONE.0115253",
-        :related_identifier_type=>"DOI",
-        :relation_type=>"References" }])
+    expect(metadata["citation"]).to eq(["https://www.w3.org/Provider/Style/URI", "https://doi.org/10.1371/journal.pone.0115253"])
   end
 
   it 'should write yaml' do
@@ -88,12 +83,7 @@ describe Bergamasco::Markdown do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)
     html = subject.render_html(file, skip_yaml_header: true, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
-    refs = subject.extract_references(html, skip_yaml_header: true, csl: 'spec/apa.csl', bibliography: 'spec/references.bib')
-    expect(refs).to eq([{:value=>"https://www.w3.org/Provider/Style/URI",
-        :related_identifier_type=>"URL",
-        :relation_type=>"References"},
-      { :value=>"10.1371/JOURNAL.PONE.0115253",
-        :related_identifier_type=>"DOI",
-        :relation_type=>"References" }])
+    refs = subject.extract_references(html)
+    expect(refs).to eq(["https://www.w3.org/Provider/Style/URI", "https://doi.org/10.1371/journal.pone.0115253"])
   end
 end
