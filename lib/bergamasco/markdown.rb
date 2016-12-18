@@ -60,7 +60,11 @@ module Bergamasco
     end
 
     def self.render_html(text, options={})
-      PandocRuby.new(text, options.except(:skip_yaml_header, :separator)).to_html
+      PandocRuby.new(text, options.except(:skip_yaml_header,
+                                          :separator,
+                                          :sitepath,
+                                          :authorpath,
+                                          :referencespath)).to_html
     rescue Errno::ENOENT
       # fallback to commonmarker if pandoc is not installed.
       # Commonmarker doesn't parse or ignore yaml frontmatter
