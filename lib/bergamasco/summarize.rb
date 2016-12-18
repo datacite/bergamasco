@@ -2,8 +2,10 @@ module Bergamasco
   module Summarize
     # based on from https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/blog_article.rb
     def self.summary(text, options={})
-      if options[:separator]
-        truncate_at_separator(text, options[:separator])
+      separator = options[:separator] || "READMORE"
+
+      if !options[:length] && text.include?(separator)
+        truncate_at_separator(text, separator)
       else
         max_length = options[:length] || 250
         ellipsis = options[:ellipsis] || "..."
