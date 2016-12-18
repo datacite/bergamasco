@@ -25,7 +25,7 @@ module Bergamasco
       metadata = update_yaml_frontmatter(metadata, new_metadata)
       new_file = join_yaml_frontmatter(metadata, content)
       IO.write(filepath, new_file)
-      new_file
+      metadata
     end
 
     def self.read_yaml(filepath)
