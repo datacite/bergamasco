@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'nokogiri', '~> 1.6.7'
   s.add_dependency 'loofah', '~> 2.0', '>= 2.0.3'
-  s.add_dependency "pandoc-ruby", '~> 2.0', '>= 2.0.0'
+  s.add_dependency 'pandoc-ruby', '~> 2.0', '>= 2.0.0'
   s.add_dependency 'commonmarker', '~> 0.14.0'
   s.add_dependency 'builder', '~> 3.2', '>= 3.2.2'
   s.add_dependency 'multi_json', '~> 1.11.2'
