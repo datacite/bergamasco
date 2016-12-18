@@ -73,10 +73,9 @@ describe Bergamasco::Markdown do
 
   it 'should update file' do
     filepath = fixture_path + 'cool-dois.html.md'
-    file = IO.read(filepath)
     new_metadata = { "doi" => "10.23725/0000-03VC"}
-    updated_file = subject.update_file(file, new_metadata)
-    expect(updated_file).to include("\ndoi: 10.23725/0000-03VC\n")
+    file = subject.update_file(filepath, new_metadata)
+    expect(file).to include("\ndoi: 10.23725/0000-03VC\n")
   end
 
   it 'should convert markdown' do
