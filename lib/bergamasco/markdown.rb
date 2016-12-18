@@ -37,15 +37,11 @@ module Bergamasco
     end
 
     def self.read_yaml_for_doi_metadata(filepath, options={})
-      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "doi", "type", "version", "references"]
-      unless File.exist?(filepath)
-        parentdir = Pathname.new(filepath).parent
-        FileUtils.mkdir_p parentdir
-        FileUtils.touch filepath
-      end
+      return nil unless File.exist?(filepath)
 
       file = IO.read(filepath)
       yaml = SafeYAML.load(file)
+      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "doi", "type", "version", "references"]
       metadata = yaml.extract!(*keys).compact
 
       content = YAML_FRONT_MATTER_REGEXP.match(file).post_match
