@@ -37,7 +37,7 @@ module Bergamasco
     end
 
     def self.read_yaml_for_doi_metadata(filepath, options={})
-      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "doi", "type", "version", "citation"]
+      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "doi", "type", "version", "references"]
       unless File.exist?(filepath)
         parentdir = Pathname.new(filepath).parent
         FileUtils.mkdir_p parentdir
@@ -51,7 +51,7 @@ module Bergamasco
       content = YAML_FRONT_MATTER_REGEXP.match(file).post_match
       html = render_html(content, options)
       metadata["summary"] = Bergamasco::Summarize.summary_from_html(html, options)
-      metadata["citation"] = extract_references(html)
+      metadata["references"] = extract_references(html)
       metadata["date"] = metadata["date"].iso8601
       metadata
     end

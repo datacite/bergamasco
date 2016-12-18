@@ -53,7 +53,7 @@ describe Bergamasco::Markdown do
     filepath = fixture_path + 'cool-dois.html.md'
     separator = "READMORE"
     metadata = subject.read_yaml_for_doi_metadata(filepath, separator: separator, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
-    expect(metadata["citation"]).to eq(["https://www.w3.org/Provider/Style/URI", "https://doi.org/10.1371/journal.pone.0115253"])
+    expect(metadata["references"]).to eq(["https://www.w3.org/Provider/Style/URI", "https://doi.org/10.1371/journal.pone.0115253"])
   end
 
   it 'should write yaml' do
