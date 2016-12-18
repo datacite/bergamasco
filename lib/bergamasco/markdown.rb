@@ -86,7 +86,7 @@ module Bergamasco
         {
           value: id,
           related_identifier_type: type,
-          relation_type: "references"
+          relation_type: "References"
         }
       end
     end
