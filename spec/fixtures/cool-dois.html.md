@@ -15,9 +15,9 @@ Cool URIs are, of course, a fundamental principle behind DOIs, with the two impo
 
 All DOIs, expressed as HTTP URI, are therefore cool URIs. So what is a cool DOI? And, furthermore, how to create and use them? To understand what a cool DOI is, we have to explain the three parts that make up a DOI:
 
-![](/images/2016/12/doi-parts.png)
+![](images/2016/12/doi-parts.png)
 
-### Proxy
+## Proxy
 
 The proxy is not part of the DOI specification, but almost all scholarly DOIs that users encounter today will be expressed as HTTP URLs. DataCite recommends that all DOIs are displayed as permanent URLs, consistent with the recommendations of other DOI registration agencies, e.g. the [Crossref DOI display guidelines](http://www.crossref.org/02publishers/doi_display_guidelines.html). When the DOI system was originally designed, it was thought that the DOI protocol would become widely used, but that clearly has not happened and displaying DOIs as **doi:10.5281/ZENODO.31780** is therefore not recommended.
 
@@ -30,13 +30,13 @@ Ed Pentz from Crossref makes the case for HTTPS in a [September blog post](http:
 
 What many users don’t know is that doi.org is not the only proxy server for DOIs. DOIs use the handle system and any handle server will resolve a DOI, just as doi.org will resolve any handle. This means that [https://hdl.handle.net/10.5281/ZENODO.31780](https://hdl.handle.net/10.5281/ZENODO.31780) will resolve to the landing page for that DOI and that [http://doi.org/10273/BGRB5054RX05201](http://doi.org/10273/BGRB5054RX05201) is a handle (for a [IGSN](http://www.igsn.org/)) and not a DOI.
 
-### Prefix
+## Prefix
 
 The DOI prefix is used as a namespace so that DOIs are globally unique without requiring global coordination for every new identifier. Prefixes in the handle system and therefore for DOIs are numbers without any semantic meaning. One lesson learned with persistent identifiers is that adding meaning to the identifier (e.g. by using a prefix with the name of the data repository) is always dangerous, because – despite best intentions – all names can change over time.
 
 Since the DOI prefix is a namespace to keep DOIs globally unique, there is usually no need for multiple prefixes for one organization managing DOI assignment. The tricky part is that these responsibilities can change, e.g. when an organization manages multiple repositories and one of them is migrated to another organization. It therefore makes sense to assign one prefix per list of resources that always stays together, e.g. one repository. It is possible that one prefix is managed by multiple organizations (as long as they use the same DOI registration agency), but that makes DOI management more complex.
 
-### Suffix
+## Suffix
 
 The suffix for a DOI can be (almost) any string. Which is both a feature and a curse. It is a feature because it gives maximal flexibility, for example when migrating existing identifiers to the DOI system. And it is a curse because it not always works well in the web context, as the list of characters allowed in a URL is limited. A good example of this are SICIs ([Serial Item and Contribution Identifier](https://en.wikipedia.org/wiki/Serial_Item_and_Contribution_Identifier)), they were defined in 1996 before the DOI system was implemented, and could then be migrated to DOIs. Unfortunately they can contain many characters that are problematic in a URL or make it difficult to validate the DOI, as in [https://doi.org/10.1002/(sici)1099-1409(199908/10)3:6/7<672::aid-jpp192>3.0.co;2-8](https://doi.org/10.1002/(sici)1099-1409(199908/10)3:6/7<672::aid-jpp192>3.0.co;2-8). A Crossref [blog post](http://blog.crossref.org/2015/08/doi-regular-expressions.html) by Andrew Gilmartin gives a good overview about the characters found in DOIs and suggests the following regular expression to check for valid DOIs:
 
@@ -53,7 +53,7 @@ Semantic information might also lead users to expect certain functionalities. A 
 
 Another issue to keep in mind when assigning suffixes is that DOIs – in contrast to HTTP URIs – are case-insensitive, [https://doi.org/10.5281/ZENODO.31780](https://doi.org/10.5281/ZENODO.31780) and [https://doi.org/10.5281/zenodo.31780](https://doi.org/10.5281/zenodo.31780) are the same DOI. All DOIs are [converted to upper case](https://www.doi.org/doi_handbook/2_Numbering.html#2.4) upon registration and DOI resolution, but DOIs are not consistently displayed in such a way.
 
-### Generating cool DOIs
+## Generating cool DOIs
 
 With all that, what should the ideal DOI look like? Its suffix should be:
 
@@ -93,6 +93,6 @@ This can be used to quickly verify a DOI, e.g. in a web form or API. The Ruby ba
 
 To answer the question raised at the beginning: a cool DOI is a DOI expressed as HTTPS URI using the doi.org proxy and using a base32-encoded suffix, for example **https://doi.org/10.5555/KVTD-VPWM**. This DOI works well in a web environment, is human readable, easy to parse and detect (e.g. in text mining), and can be generated using an algorithm that is well understood and supported.
 
-![](/images/2016/12/cool-dois.png)
+![](images/2016/12/cool-dois.png)
 
-### References
+## References
