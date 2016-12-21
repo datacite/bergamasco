@@ -68,7 +68,8 @@ module Bergamasco
                                           :username,
                                           :password,
                                           :sandbox,
-                                          :prefix)).to_html
+                                          :prefix,
+                                          :number)).to_html
     rescue Errno::ENOENT
       # fallback to commonmarker if pandoc is not installed.
       # Commonmarker doesn't parse or ignore yaml frontmatter

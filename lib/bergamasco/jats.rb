@@ -14,7 +14,8 @@ module Bergamasco
                                                       :username,
                                                       :password,
                                                       :sandbox,
-                                                      :prefix))
+                                                      :prefix,
+                                                      :number))
       converter.convert
     rescue Errno::ENOENT
       # if pandoc is not installed.
