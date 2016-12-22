@@ -30,7 +30,7 @@ describe Bergamasco::Summarize do
   it 'should truncate at separator and convert to html' do
     filepath = fixture_path + 'cool-dois-without-yml.md'
     file = IO.read(filepath)
-    html = Bergamasco::Markdown.render_html(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.bib')
+    html = Bergamasco::Pandoc.convert(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.bib')
     content = subject.summary_from_html(html, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.bib')
     expect(content).to start_with("In 1998 Tim Berners-Lee coined the term cool URIs (1998), that is URIs that don’t change.")
     expect(content).to end_with("the referenced resource.")

@@ -64,13 +64,6 @@ describe Bergamasco::Markdown do
     expect(length).to eq(text.length)
   end
 
-  it 'should write bibliography to yaml' do
-    bib_path = fixture_path + 'references.bib'
-    yaml_path = fixture_path + 'references.yaml'
-    yaml = subject.write_bibliograpy_to_yaml(bib_path, yaml_path)
-    expect(yaml["references"].length).to eq(61)
-  end
-
   it 'should update file' do
     filepath = fixture_path + 'cool-dois.html.md'
     new_metadata = { "doi" => "10.23725/0000-03VC"}
@@ -81,14 +74,14 @@ describe Bergamasco::Markdown do
   it 'should convert markdown' do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)
-    html = subject.render_html(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
+    html = Bergamasco::Pandoc.convert(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
     expect(html).to start_with("<p>In 1998 Tim Berners-Lee coined the term cool URIs <span class=\"citation\">(1998)</span>, that is URIs that don’t change.")
   end
 
   it 'should extract references' do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)
-    html = subject.render_html(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
+    html = Bergamasco::Pandoc.convert(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
     refs = subject.extract_references(html)
     expect(refs).to eq(["https://www.w3.org/Provider/Style/URI", "https://doi.org/10.1371/journal.pone.0115253"])
   end

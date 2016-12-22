@@ -13,5 +13,5 @@ require 'addressable/uri'
 require "bergamasco/summarize"
 require "bergamasco/sanitize"
 require "bergamasco/markdown"
-require "bergamasco/jats"
+require "bergamasco/pandoc"
 require "bergamasco/whitelist_scrubber"
