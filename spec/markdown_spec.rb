@@ -14,10 +14,10 @@ describe Bergamasco::Markdown do
   it 'should update yaml frontmatter' do
     filepath = fixture_path + 'cool-dois.html.md'
     file = IO.read(filepath)
-    new_metadata = { "doi" => "10.23725/0000-03VC"}
+    new_metadata = { "doi" => "10.5072/0000-03VC"}
     metadata, content = subject.split_yaml_frontmatter(file)
     metadata = subject.update_yaml_frontmatter(metadata, new_metadata)
-    expect(metadata["doi"]).to eq("10.23725/0000-03VC")
+    expect(metadata["doi"]).to eq("10.5072/0000-03VC")
   end
 
   it 'should update yaml frontmatter remove attribute' do
@@ -66,9 +66,9 @@ describe Bergamasco::Markdown do
 
   it 'should update file' do
     filepath = fixture_path + 'cool-dois.html.md'
-    new_metadata = { "doi" => "10.23725/0000-03VC"}
+    new_metadata = { "doi" => "10.5072/0000-03VC"}
     metadata = subject.update_file(filepath, new_metadata)
-    expect(metadata["doi"]).to eq("10.23725/0000-03VC")
+    expect(metadata["doi"]).to eq("10.5072/0000-03VC")
   end
 
   it 'should convert markdown' do

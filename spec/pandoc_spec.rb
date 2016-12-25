@@ -16,7 +16,7 @@ describe Bergamasco::Pandoc do
     xml = subject.convert_to_jats(file, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
     doc = Nokogiri::XML(xml)
     article_id = doc.at_xpath("//article-id")
-    expect(article_id.text).to eq("10.23725/0000-03VC")
+    expect(article_id.text).to eq("10.5072/0000-03VC")
     expect(article_id.values.first).to eq("doi")
   end
 
@@ -25,7 +25,7 @@ describe Bergamasco::Pandoc do
     xml_path = subject.write_jats(filepath, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
     doc = File.open(xml_path) { |f| Nokogiri::XML(f) }
     article_id = doc.at_xpath("//article-id")
-    expect(article_id.text).to eq("10.23725/0000-03VC")
+    expect(article_id.text).to eq("10.5072/0000-03VC")
     expect(article_id.values.first).to eq("doi")
   end
 

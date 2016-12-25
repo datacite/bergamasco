@@ -23,7 +23,7 @@ module Bergamasco
     ALLOWED_OPTIONS = AVAILABLE_OPTIONS + ALIAS_OPTIONS
 
     def self.convert(text, options={})
-      options = options.select { |k, v| ALLOWED_OPTIONS.include?(k.to_s.gsub('_', '-')) }
+      options = options.select { |k, v| ALLOWED_OPTIONS.include?(k.to_s.gsub('_', '-')) }.to_h
 
       options[:from] ||= :markdown
       options[:to] ||= :html
