@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bergamasco (0.3.3)
+    bergamasco (0.3.5)
       activesupport (~> 4.2, >= 4.2.5)
       addressable (~> 2.3.8)
       builder (~> 3.2, >= 3.2.2)
@@ -23,7 +23,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     builder (3.2.2)
-    codeclimate-test-reporter (1.0.3)
+    codeclimate-test-reporter (1.0.4)
       simplecov
     diff-lcs (1.2.5)
     docile (1.1.5)

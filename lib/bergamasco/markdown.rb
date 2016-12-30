@@ -44,7 +44,7 @@ module Bergamasco
 
       file = IO.read(filepath)
       yaml = SafeYAML.load(file)
-      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "doi", "type", "version", "references", "published"]
+      keys = options[:keys] || ["title", "author", "date", "tags", "summary", "accession_number", "doi", "type", "version", "references", "published"]
       metadata = yaml.extract!(*keys).compact
 
       content = YAML_FRONT_MATTER_REGEXP.match(file).post_match
