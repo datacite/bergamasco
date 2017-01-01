@@ -44,6 +44,8 @@ module Bergamasco
 
       file = IO.read(filepath)
       yaml = SafeYAML.load(file)
+      return nil unless yaml.present?
+
       keys = options[:keys] || ["title", "author", "date", "tags", "summary", "accession_number", "doi", "type", "version", "references", "published"]
       metadata = yaml.extract!(*keys).compact
 
