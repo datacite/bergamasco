@@ -39,16 +39,8 @@ module Bergamasco
       csl = File.expand_path("../jats.csl", __FILE__)
 
       options = options.merge(template: template, to: to, csl: csl)
-      options = options.merge(metadata: options[:metadata]) if options[:metadata].present?
 
       convert(text, options)
-    end
-
-    def self.write_jats(input_path, output_path, options={})
-      file = IO.read(input_path)
-      xml = convert_to_jats(file, options)
-      IO.write(output_path, xml)
-      output_path
     end
 
     def self.write_bibliograpy_to_yaml(bib_path, yaml_path)
