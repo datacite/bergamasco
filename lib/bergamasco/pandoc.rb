@@ -34,9 +34,11 @@ module Bergamasco
     end
 
     def self.convert_to_jats(text, options={})
-      options = options.merge(template: "templates/default.jats",
-                              to: "lib/bergamasco/jats.lua",
-                              csl: "lib/bergamasco/jats.csl")
+      template = File.expand_path("../../../templates/default.jats", __FILE__)
+      to = File.expand_path("../jats.lua", __FILE__)
+      csl = File.expand_path("../jats.csl", __FILE__)
+
+      options = options.merge(template: template, to: to, csl: csl)
       options = options.merge(metadata: options[:metadata]) if options[:metadata].present?
 
       convert(text, options)
