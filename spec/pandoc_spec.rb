@@ -21,8 +21,9 @@ describe Bergamasco::Pandoc do
   end
 
   it 'should write jats xml' do
-    filepath = fixture_path + 'cool-dois.html.md'
-    xml_path = subject.write_jats(filepath, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
+    input_path = fixture_path + 'cool-dois.html.md'
+    output_path = fixture_path + 'cool-dois.xml'
+    xml_path = subject.write_jats(input_path, output_path, skip_yaml_header: true, csl: 'spec/fixtures/apa.csl', bibliography: 'spec/fixtures/references.yaml')
     doc = File.open(xml_path) { |f| Nokogiri::XML(f) }
     article_id = doc.at_xpath("//article-id")
     expect(article_id.text).to eq("10.5072/0000-03VC")

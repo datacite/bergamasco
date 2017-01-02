@@ -42,12 +42,11 @@ module Bergamasco
       convert(text, options)
     end
 
-    def self.write_jats(filepath, options={})
-      file = IO.read(filepath)
-      xml_path = File.join(File.dirname(filepath), File.basename(filepath, ".html.md")) + ".xml"
+    def self.write_jats(input_path, output_path, options={})
+      file = IO.read(input_path)
       xml = convert_to_jats(file, options)
-      IO.write(xml_path, xml)
-      xml_path
+      IO.write(output_path, xml)
+      output_path
     end
 
     def self.write_bibliograpy_to_yaml(bib_path, yaml_path)
