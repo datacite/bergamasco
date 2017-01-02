@@ -3,13 +3,27 @@
                   "http://jats.nlm.nih.gov/publishing/1.1/JATS-journalpublishing1.dtd">
 <article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" article-type="edtorial" dtd-version="1.1">
 <front>
-$if(publisher)$
 <journal-meta>
-<publisher>
-<publisher-name>$publisher$</publisher-name>
-</publisher>
-</journal-meta>
+$if(accession_number)$
+<journal-id journal-id-type="publisher-id">$accession_number$</journal-id>
 $endif$
+<journal-title-group>
+$if(journal_title)$
+<journal-title>$journal_title$</journal-title>
+$endif$
+$if(journal_abbrev_title)$
+<abbrev-journal-title>$journal_abbrev_title$</abbrev-journal-title>
+$endif$
+</journal-title-group>
+$if(publisher)$
+<publisher>
+<publisher-name>$publisher_name$</publisher-name>
+$if(publisher_loc)$
+<publisher-loc>$publisher_loc$</publisher-loc>
+$endif$
+</publisher>
+$endif$
+</journal-meta>
 <article-meta>
 $if(doi)$
 <article-id pub-id-type="doi">$doi$</article-id>
