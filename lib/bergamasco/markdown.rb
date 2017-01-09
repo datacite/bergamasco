@@ -53,7 +53,6 @@ module Bergamasco
       html = Bergamasco::Pandoc.convert(content, options)
       metadata["summary"] = Bergamasco::Summarize.summary_from_html(html, options)
       metadata["references"] = extract_references(html)
-      metadata["date"] = metadata["date"].iso8601
       metadata
     end
 
