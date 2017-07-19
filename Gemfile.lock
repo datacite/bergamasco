@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    bergamasco (0.3.14)
+    bergamasco (0.3.15)
       activesupport (>= 4.2.5, < 6)
       addressable (>= 2.3.6)
       builder (~> 3.2, >= 3.2.2)
       loofah (~> 2.0, >= 2.0.3)
-      multi_json (~> 1.11.2)
+      multi_json (~> 1.12)
       nokogiri (~> 1.6, >= 1.6.8)
       oj (~> 2.18, >= 2.18.1)
       pandoc-ruby (~> 2.0, >= 2.0.0)
@@ -34,7 +34,7 @@ GEM
       nokogiri (>= 1.5.9)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
-    multi_json (1.11.3)
+    multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     oj (2.18.5)
