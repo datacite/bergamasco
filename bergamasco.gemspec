@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'pandoc-ruby', '~> 2.0', '>= 2.0.0'
   s.add_dependency 'builder', '~> 3.2', '>= 3.2.2'
   s.add_dependency 'multi_json', '~> 1.12'
-  s.add_dependency 'oj', ' ~> 2.18', '>= 2.18.1'
+  s.add_dependency 'oj', '~> 3.3', '>= 3.3.0'
   s.add_dependency 'activesupport', '>= 4.2.5', '< 6'
   s.add_dependency 'safe_yaml', '~> 1.0', '>= 1.0.4'
   s.add_dependency 'addressable', ">= 2.3.6"
